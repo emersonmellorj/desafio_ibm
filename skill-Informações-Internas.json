@@ -1,0 +1,200 @@
+{
+  "intents": [
+    {
+      "intent": "duvida",
+      "examples": [
+        {
+          "text": "me diz a respeito de tecnologia 4g"
+        },
+        {
+          "text": "me fale sobre tecnologia 4g"
+        },
+        {
+          "text": "quero saber sobre fibra otica"
+        },
+        {
+          "text": "me fale sobre fibra ótica"
+        },
+        {
+          "text": "o que é fibra otica?"
+        },
+        {
+          "text": "o que é tecnologia 4g?"
+        },
+        {
+          "text": "quero saber sobre 4g"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "localizao",
+      "examples": [
+        {
+          "text": "como eu chego na ibm?"
+        },
+        {
+          "text": "onde está o banheiro?"
+        },
+        {
+          "text": "onde fica o restaurante?"
+        }
+      ],
+      "description": "para informacoes sobre localizao"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "tecnologias",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "4g",
+          "synonyms": [
+            "4g",
+            "tecnologia 4g",
+            "internet 4g"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "fibra ótica",
+          "synonyms": [
+            "fibra ótica",
+            "ótica fibra"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Fibra óptica é um filamento flexível e transparente fabricado a partir de vidro ou plástico extrudido e que é utilizado como condutor de elevado rendimento de luz, imagens ou impulsos codificados."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1592485363844",
+      "conditions": "@tecnologias:(fibra ótica)",
+      "dialog_node": "response_4_1592485544135",
+      "previous_sibling": "response_5_1592485463231"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "4G é a sigla para a Quarta Geração de telefonia móvel. O 4G está baseada totalmente em IP, sendo um sistema e uma rede, alcançando a convergência entre as redes de cabo e sem fio e computadores."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_2_1592485363844",
+      "conditions": "@tecnologias:4g",
+      "dialog_node": "response_5_1592485463231"
+    },
+    {
+      "type": "standard",
+      "title": "Em outros casos",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Eu não entendi. Você pode tentar reformular a frase."
+              },
+              {
+                "text": "Você pode reformular sua afirmação? Eu não estou entendendo."
+              },
+              {
+                "text": "Eu não entendi o sentido."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Em outros casos",
+      "previous_sibling": "node_2_1592485363844",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "title": "Dúvidas",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#duvida",
+      "dialog_node": "node_2_1592485363844",
+      "previous_sibling": "Bem-vindo"
+    },
+    {
+      "type": "standard",
+      "title": "Bem Vindo",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Olá, sou o Assistente Virtual da Oi :)\nTe ajudo com dúvidas sobre Fibra ótica e Tecnologia 4g."
+              },
+              {
+                "text": ""
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Bem-vindo"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "disambiguation": {
+      "prompt": "Você quis dizer:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "Nenhuma das anteriores"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Você quis dizer:"
+    }
+  },
+  "learning_opt_out": false,
+  "name": "Oi - Assistente",
+  "language": "pt-br",
+  "description": "tira dúvidas sobre tecnologias 4g e fibra ótica"
+}
