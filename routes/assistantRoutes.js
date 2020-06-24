@@ -11,5 +11,4 @@ assistantRoutes.post('/', async function (req, res, next) {
         next(err.message)
     }
 })
-
 module.exports = assistantRoutes
