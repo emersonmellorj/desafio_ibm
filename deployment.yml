@@ -25,3 +25,4 @@ spec:
          - name: ASSISTANT_ID
            value: gB1u9agtVTSARIHHlTB9RnHRxF3es-70H9XcJUudegqY
        imagePullPolicy: Always
+
