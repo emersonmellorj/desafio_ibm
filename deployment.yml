@@ -21,8 +21,8 @@ spec:
          - name: APIKEY
            value: gB1u9agtVTSARIHHlTB9RnHRxF3es-70H9XcJUudegqY
          - name: URL
-           value: https://gateway-wdc.watsonplatform.net/assistant/api
+           value: https://api.us-south.assistant.watson.cloud.ibm.com/instances/5f7c5f35-f251-4b98-8547-f30b5343acab
          - name: ASSISTANT_ID
-           value: gB1u9agtVTSARIHHlTB9RnHRxF3es-70H9XcJUudegqY
+           value: 6a435749-34ae-419c-b39a-8b9026a49a7d
        imagePullPolicy: Always
 
